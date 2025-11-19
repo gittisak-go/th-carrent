@@ -30,6 +30,38 @@
 - **Tailwind CSS**
 - **TypeScript**
 
+## Deployment
+
+### Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/th-carrent)
+
+1. Click the "Deploy" button above or manually deploy via [Vercel Dashboard](https://vercel.com/dashboard)
+2. Connect your GitHub repository
+3. Configure environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anonymous key
+   - Add any additional Stripe or other API keys as needed
+4. Deploy and enjoy!
+
+### Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm run start
+```
+
+Make sure to create a `.env.local` file with your environment variables before running locally.
+
 ## Contact
 
 For any inquiries or feedback, feel free to reach out at [kinangh98@gmail.com](mailto:kinangh98@gmail.com).

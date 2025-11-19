@@ -1,0 +1,7 @@
+.env*.local
+.git
+.github
+node_modules
+.next
+supabase
+*.log

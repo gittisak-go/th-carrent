@@ -1,10 +1,9 @@
 import {createServerClient} from '@supabase/ssr'
 import {cookies} from 'next/headers'
-import {Database} from '@/database.types'
 
 export async function createClient()
 {
-    const cookieStore = await cookies()
+    await cookies()
 
     // No-login mode: Always return a comprehensive mock client for LINE LIFF integration.
     // All query methods return empty/null results safely without network calls.

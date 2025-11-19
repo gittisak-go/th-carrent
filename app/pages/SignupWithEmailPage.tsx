@@ -36,7 +36,7 @@ export default function SignupWithEmailPage({isAdmin}: { isAdmin: boolean })
         if (!state.error) return;
         toast.error(state.error)
         turnstile.reset();
-    }, [state]);
+    }, [state, turnstile]);
 
     return (
         <form action={signupAction}

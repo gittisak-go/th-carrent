@@ -5,9 +5,26 @@
  * https://developers.line.biz/en/docs/liff/overview/
  */
 
+interface LiffInstance {
+  init: (config: { liffId: string }) => Promise<void>
+  isLoggedIn: () => boolean
+  login: () => void
+  getProfile: () => Promise<{
+    userId: string
+    displayName: string
+    pictureUrl?: string
+    statusMessage?: string
+  }>
+  closeWindow: () => void
+  isApiAvailable: (api: string) => boolean
+  shareTargetPicker: (messages: Array<{ type: string; text: string }>) => Promise<void>
+  isInClient: () => boolean
+  getAccessToken: () => string | null
+}
+
 declare global {
   interface Window {
-    liff: any
+    liff: LiffInstance
   }
 }
 
