@@ -5,7 +5,7 @@ import CarCard from "@/app/(dashboard)/customer/cars/CarCard";
 import {FaFilterCircleXmark, FaDollarSign, FaLocationDot, FaCar, FaGasPump} from "react-icons/fa6";
 import {redirect} from "next/navigation";
 import {getDaysCountFromDateRange} from "@/lib/util/util";
-import {getAllCars, getFeaturedCars, mockCarTypes} from "@/lib/data/mockCars";
+import {getAllCars, getFeaturedCars} from "@/lib/data/mockCars";
 
 export const metadata = {
     title: 'เลือกรถเช่า | th-carrent',
@@ -24,7 +24,6 @@ export default async function CustomerCarsPage({searchParams}: {
 
     // ใช้ข้อมูล mock สำหรับ demo (ไม่ต้องเชื่อมต่อ database)
     const cars = getAllCars();
-    const carTypes = mockCarTypes;
 
     const featuredCars = getFeaturedCars();
     const regularCars = cars.filter(car => !featuredCars.includes(car));

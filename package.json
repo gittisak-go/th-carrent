@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel:deploy": "pwsh ./scripts/deploy-vercel.ps1",
+    "vercel:env": "pwsh ./scripts/setup-vercel-env.ps1"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.1",

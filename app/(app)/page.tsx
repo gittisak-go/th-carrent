@@ -6,7 +6,6 @@ import * as m from "framer-motion/m"
 import user1 from '@/public/images/testimonials/user (1).jpg';
 import user2 from '@/public/images/testimonials/user (2).jpg';
 import user3 from '@/public/images/testimonials/user (3).jpg';
-import carOwnersBg from '@/public/images/car-owners.jpg';
 import HomePageFeaturedCarsCarousel from "@/app/(app)/HomePageFeaturedCarsCarousel";
 import {Car} from "@/lib/types/models";
 import {FaCarSide, FaHeadset, FaSackDollar} from "react-icons/fa6";

@@ -38,7 +38,7 @@ export function LoginPage({isAdmin}: { isAdmin: boolean })
         if (!state.error) return;
         toast.error(state.error)
         turnstile.reset();
-    }, [state]);
+    }, [state, turnstile]);
 
     const handleOAuthSignIn = async () =>
     {

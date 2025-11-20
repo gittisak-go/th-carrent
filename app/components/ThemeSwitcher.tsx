@@ -21,9 +21,12 @@ export function ThemeSwitcher({className = ''}: { className?: string })
 
     return (
         <Select
-            // @ts-ignore
             value={options.find((option) => option.value === theme)}
-            onChange={(selectedOption: { value: React.SetStateAction<string>; }) => setTheme(selectedOption.value)}
+            onChange={(selectedOption) => {
+                if (selectedOption && typeof selectedOption === 'object' && 'value' in selectedOption) {
+                    setTheme(selectedOption.value as string);
+                }
+            }}
             className={className}
             isSearchable={false}
             options={options}
