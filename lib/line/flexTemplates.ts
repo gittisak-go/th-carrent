@@ -11,9 +11,9 @@ export type ProfileFlexOptions = {
 export function buildProfileFlex(opts: ProfileFlexOptions = {}) {
   const {
     title = 'Flex Message Corp',
-    name = 'Mary Smith',
-    subtitle = 'Founder at Flex Message Corp',
-    imageUrl = 'https://via.placeholder.com/240x240.png?text=Avatar',
+    name = 'นางน้อย',
+    subtitle = 'แอดมินเพจ',
+    imageUrl = 'https://raw.githubusercontent.com/gittisak-go/th-carrent/main/docs/assets/nang-noi.jpg',
     websiteUrl = 'https://example.com',
     registerUrl = 'https://example.com/register',
     phone = '+66000000000'
