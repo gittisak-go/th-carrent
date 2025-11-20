@@ -27,7 +27,7 @@
         "contents": [
           {
             "type": "image",
-            "url": "https://via.placeholder.com/240x240.png?text=Avatar",
+            "url": "https://raw.githubusercontent.com/gittisak-go/th-carrent/main/docs/assets/nang-noi.jpg",
             "size": "xxl",
             "aspectMode": "cover",
             "aspectRatio": "1:1",
@@ -45,7 +45,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "Mary Smith",
+            "text": "นางน้อย",
             "weight": "bold",
             "size": "xl",
             "margin": "md",
@@ -53,7 +53,7 @@
           },
           {
             "type": "text",
-            "text": "Founder at Flex Message Corp",
+            "text": "แอดมินเพจ",
             "size": "sm",
             "color": "#666666",
             "align": "center",
