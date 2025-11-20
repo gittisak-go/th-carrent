@@ -41,29 +41,27 @@
   </head>
   <body>
     <div class="container">
-      <h1>th-carrent — หน้า LIFF ชั่วคราว</h1>
-      <p>
-        หน้านี้เป็นหน้า placeholder แบบ static เพื่อให้คุณมี URL สำหรับลงทะเบียน
-        LIFF ได้ทันที หากต้องการใช้งาน LIFF จริง ให้ deploy โปรเจคไปที่ Vercel
-        (แนะนำ) เพื่อให้มีทั้งหน้าเว็บและ webhook server
-      </p>
-      <ul>
-        <li>
-          <strong>สิ่งที่หน้านี้ให้ได้:</strong> URL HTTPS สำหรับลงทะเบียน LIFF
-        </li>
-        <li>
-          <strong>ข้อจำกัด:</strong> เว็บนี้เป็น static page เท่านั้น —
-          ไม่รองรับ webhook ของ LINE
-        </li>
-      </ul>
-      <p>
-        เมื่อต้องการให้ผมช่วยต่อเพื่อดีพลอยจริงบน Vercel (รวม webhook) บอกผมได้
-        — ถ้าต้องการ URL ตอนนี้ ให้เปิด GitHub Pages ใน repo โดยเลือก source
-        เป็น <code>docs/</code>.
-      </p>
-      <a class="button" href="https://github.com/gittisak-go/th-carrent"
-        >ไปที่ GitHub repo</a
-      >
+      <header>
+        <h1>th-carrent — ศูนย์กลาง (Hub)</h1>
+        <p>หน้า Hub นี้เป็นศูนย์รวมลิงก์ไปยังส่วนต่าง ๆ ของโปรเจค — เว็บไซต์, แอพ (LIFF), เอกสาร developer และ webhook/API</p>
+      </header>
+
+      <nav>
+        <ul>
+          <li><a href="/gittisak-go/th-carrent/">หน้าโฮม (GitHub Pages)</a></li>
+          <li><a href="/gittisak-go/th-carrent/docs/web/">เว็บไซต์ (Web)</a></li>
+          <li><a href="/gittisak-go/th-carrent/docs/apps/">แอพ / LIFF (Apps)</a></li>
+          <li><a href="/gittisak-go/th-carrent/docs/api/">API & Webhook</a></li>
+          <li><a href="/gittisak-go/th-carrent/docs/LINE-deploy.md">คู่มือ LINE / Deploy</a></li>
+          <li><a href="https://github.com/gittisak-go/th-carrent">Repository on GitHub</a></li>
+        </ul>
+      </nav>
+
+      <section>
+        <h2>เริ่มต้นใช้งาน</h2>
+        <p>ใช้หน้าในส่วนนี้เป็น URL สำหรับลงทะเบียน LIFF หรือเป็นหน้าอ้างอิงสำหรับทีมพัฒนา หากต้องการ webhook ที่ตอบข้อความ LINE ได้ ให้ deploy โปรเจคไปที่ Vercel</p>
+        <div style="margin-top:16px"><a class="button" href="/gittisak-go/th-carrent/docs/web/">ไปที่เว็บไซต์ตัวอย่าง</a> <a class="button" href="/gittisak-go/th-carrent/docs/apps/">ไปที่หน้าแอพ</a></div>
+      </section>
     </div>
   </body>
 </html>
