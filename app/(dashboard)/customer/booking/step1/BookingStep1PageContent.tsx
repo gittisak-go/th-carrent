@@ -6,9 +6,10 @@ import {getDaysCountFromDateRange} from "@/lib/util/util";
 import BookingMap from "@/app/(dashboard)/customer/booking/step1/BookingMap";
 import {FaCalendarDays, FaDownLong, FaMapLocation, FaUpLong} from "react-icons/fa6";
 import {rentTimes} from "@/lib/types/rentTimes";
-import {createCheckoutSession} from "@/app/(dashboard)/customer/booking/step1/action";
+import {createCheckoutSession, createPromptPaySession} from "@/app/(dashboard)/customer/booking/step1/action";
 import {toast} from "react-toastify";
 import {MoonLoader} from "react-spinners";
+import {useRouter} from "next/navigation";
 
 type BookingInfoType = {
     car: Car,
@@ -22,8 +23,10 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
     const rentDaysCount = getDaysCountFromDateRange(rentDate['pickup-date']);
     const pickupDates = rentDate['pickup-date'].split('-');
     const pickupTime = rentTimes.find(time => time.value == rentDate['pickup-time'])?.label;
+    const router = useRouter();
 
-    const [isRedirectingToStripe, setIsRedirectingToStripe] = useState(false)
+    const [isRedirectingToStripe, setIsRedirectingToStripe] = useState(false);
+    const [isProcessingPromptPay, setIsProcessingPromptPay] = useState(false);
 
     const handleCheckout = async (e: FormEvent<HTMLFormElement>) =>
     {
@@ -47,6 +50,39 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
         }
 
         window.location.href = url;
+    };
+
+    const handlePromptPayCheckout = async () => {
+        setIsProcessingPromptPay(true);
+
+        const { paymentId, error } = await createPromptPaySession(
+            {
+                name: `${car.manufacturer} ${car.model}`,
+                price: car.price_per_day * rentDaysCount,
+                carId: car.id!
+            },
+            {
+                pickupDate: rentDate['pickup-date'],
+                pickupTime: rentDate['pickup-time'],
+                deliveryLocation: JSON.stringify(deliveryLocation)
+            }
+        );
+
+        if (error || !paymentId) {
+            toast.error(`Failed to create PromptPay session: ${error}`);
+            setIsProcessingPromptPay(false);
+            return;
+        }
+
+        // Redirect to PromptPay payment page
+        const params = new URLSearchParams({
+            car: encodeURIComponent(JSON.stringify(car)),
+            rentDate: JSON.stringify(rentDate),
+            deliveryLocation: JSON.stringify(deliveryLocation),
+            paymentId: paymentId
+        });
+
+        router.push(`/customer/booking/step2-promptpay?${params.toString()}`);
     };
 
     return (
@@ -86,14 +122,27 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
                         ${car.price_per_day * rentDaysCount}
                     </span>
 
+                    <div className="divider">เลือกวิธีชำระเงิน</div>
+
                     <form onSubmit={handleCheckout} id='checkoutForm'>
-                        <button disabled={isRedirectingToStripe} className="btn btn-primary w-full">
+                        <button disabled={isRedirectingToStripe || isProcessingPromptPay} className="btn btn-primary w-full">
                             {isRedirectingToStripe ?
                                 <><MoonLoader size='20'/> Redirecting</> :
-                                <h5>Proceed to Checkout</h5>
+                                <h5>Proceed to Checkout (Card)</h5>
                             }
                         </button>
                     </form>
+
+                    <button 
+                        onClick={handlePromptPayCheckout}
+                        disabled={isRedirectingToStripe || isProcessingPromptPay} 
+                        className="btn btn-outline btn-primary w-full"
+                    >
+                        {isProcessingPromptPay ?
+                            <><MoonLoader size='20'/> กำลังดำเนินการ...</> :
+                            <h5>ชำระด้วย PromptPay (QR Code)</h5>
+                        }
+                    </button>
                 </div>
             </div>
         </div>
