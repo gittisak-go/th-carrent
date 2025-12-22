@@ -160,6 +160,7 @@ export default function PromptPayPaymentContent({
                         title="วันและเวลาคืนรถ"
                         icon={<FaUpLong className="text-primary" />}
                     >
+                        {/* Return time is hardcoded to 12:00 AM as per business logic */}
                         {pickupDates[1]} - 12:00 AM
                     </BookingItem>
 

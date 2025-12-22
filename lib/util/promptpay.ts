@@ -17,6 +17,33 @@ export interface PromptPayOptions {
 }
 
 /**
+ * Format phone number or ID card for PromptPay
+ * @param phoneNumber - Phone number (e.g., '0812345678')
+ * @param idCard - ID card number
+ * @returns Formatted identifier
+ */
+function formatPromptPayIdentifier(phoneNumber?: string, idCard?: string): string {
+  if (!phoneNumber && !idCard) {
+    throw new Error('Either phoneNumber or idCard must be provided');
+  }
+
+  let identifier = phoneNumber || idCard!;
+  
+  // Remove all dashes and spaces
+  identifier = identifier.replace(/[-\s]/g, '');
+  
+  // For phone numbers, ensure it starts with country code
+  if (phoneNumber && !identifier.startsWith('66')) {
+    // Remove leading 0 and add Thailand country code (66)
+    if (identifier.startsWith('0')) {
+      identifier = '66' + identifier.substring(1);
+    }
+  }
+
+  return identifier;
+}
+
+/**
  * Generate PromptPay QR code as SVG string
  * 
  * @param options - PromptPay options (phoneNumber or idCard, and optional amount)
@@ -28,28 +55,10 @@ export interface PromptPayOptions {
 export async function generatePromptPayQR(options: PromptPayOptions): Promise<string> {
   const { phoneNumber, idCard, amount } = options;
 
-  if (!phoneNumber && !idCard) {
-    throw new Error('Either phoneNumber or idCard must be provided');
-  }
-
-  // Format phone number: remove dashes and add country code if needed
-  let identifier = phoneNumber || idCard;
-  
-  if (identifier) {
-    // Remove all dashes and spaces
-    identifier = identifier.replace(/[-\s]/g, '');
-    
-    // For phone numbers, ensure it starts with country code
-    if (phoneNumber && !identifier.startsWith('66')) {
-      // Remove leading 0 and add Thailand country code (66)
-      if (identifier.startsWith('0')) {
-        identifier = '66' + identifier.substring(1);
-      }
-    }
-  }
+  const identifier = formatPromptPayIdentifier(phoneNumber, idCard);
 
   // Generate the PromptPay payload string
-  const payload = generatePayload(identifier!, { amount });
+  const payload = generatePayload(identifier, { amount });
 
   // Generate QR code as SVG
   const qrCodeSvg = await QRCode.toString(payload, {
@@ -76,25 +85,10 @@ export async function generatePromptPayQR(options: PromptPayOptions): Promise<st
 export async function generatePromptPayQRDataURL(options: PromptPayOptions): Promise<string> {
   const { phoneNumber, idCard, amount } = options;
 
-  if (!phoneNumber && !idCard) {
-    throw new Error('Either phoneNumber or idCard must be provided');
-  }
-
-  // Format identifier
-  let identifier = phoneNumber || idCard;
-  
-  if (identifier) {
-    identifier = identifier.replace(/[-\s]/g, '');
-    
-    if (phoneNumber && !identifier.startsWith('66')) {
-      if (identifier.startsWith('0')) {
-        identifier = '66' + identifier.substring(1);
-      }
-    }
-  }
+  const identifier = formatPromptPayIdentifier(phoneNumber, idCard);
 
   // Generate the PromptPay payload string
-  const payload = generatePayload(identifier!, { amount });
+  const payload = generatePayload(identifier, { amount });
 
   // Generate QR code as Data URL
   const qrCodeDataUrl = await QRCode.toDataURL(payload, {
@@ -115,21 +109,8 @@ export async function generatePromptPayQRDataURL(options: PromptPayOptions): Pro
 export function getPromptPayPayload(options: PromptPayOptions): string {
   const { phoneNumber, idCard, amount } = options;
 
-  if (!phoneNumber && !idCard) {
-    throw new Error('Either phoneNumber or idCard must be provided');
-  }
+  const identifier = formatPromptPayIdentifier(phoneNumber, idCard);
 
-  let identifier = phoneNumber || idCard;
-  
-  if (identifier) {
-    identifier = identifier.replace(/[-\s]/g, '');
-    
-    if (phoneNumber && !identifier.startsWith('66')) {
-      if (identifier.startsWith('0')) {
-        identifier = '66' + identifier.substring(1);
-      }
-    }
-  }
-
-  return generatePayload(identifier!, { amount });
+  return generatePayload(identifier, { amount });
 }
+
