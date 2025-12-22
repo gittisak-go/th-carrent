@@ -11,6 +11,8 @@
 - Dynamic admin dashboard for managing bookings, cars, and more.
 - Customer dashboard with car browsing and booking capabilities.
 - Secure authentication system powered by Supabase.
+- **PromptPay QR Code payment integration** for Thai banking apps.
+- Stripe payment integration for international card payments.
 - Responsive design optimized for both desktop and mobile devices.
 - Modern UI and intuitive workflows.
 
@@ -18,7 +20,8 @@
 
 - **Next.js 15**
 - **Supabase**
-- **Stripe**
+- **Stripe** - International card payments
+- **PromptPay** - Thai QR code payments
 - **DaisyUI**
 - **Cloudflare Turnstile**
 - **FilePond**
@@ -41,7 +44,9 @@
 3. Configure environment variables:
    - `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anonymous key
-   - Add any additional Stripe or other API keys as needed
+   - `STRIPE_SECRET_KEY` - Your Stripe secret key (for card payments)
+   - `NEXT_PUBLIC_PROMPTPAY_PHONE` - Your PromptPay phone number (for QR payments)
+   - Add any additional API keys as needed
 4. Deploy and enjoy!
 
 ### Local Development
@@ -60,7 +65,9 @@ npm run build
 npm run start
 ```
 
-Make sure to create a `.env.local` file with your environment variables before running locally.
+Make sure to create a `.env.local` file with your environment variables before running locally. See `.env.local.example` for reference.
+
+For detailed information about the PromptPay QR code payment integration, see [docs/PROMPTPAY.md](docs/PROMPTPAY.md).
 
 ## Contact
 
