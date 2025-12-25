@@ -58,7 +58,7 @@ export default function AssignUserRolePageContent({role}: { role: string })
         }
 
         assignRole()
-    }, [supabase]);
+    }, [supabase, role, router]);
 
     return (
         <div className='min-h-screen flex flex-col justify-center items-center gap-6'>

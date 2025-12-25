@@ -1,6 +1,6 @@
 import { createHmac, timingSafeEqual } from 'crypto'
 import { getAllCars, formatThaiPrice } from '@/lib/data/mockCars'
-import { getDraft, setDraft, clearDraft, confirmBooking } from '@/lib/data/bookings'
+import { getDraft, setDraft, confirmBooking } from '@/lib/data/bookings'
 import { sendBookingConfirmation } from '@/lib/line/messaging'
 
 const CHANNEL_SECRET = process.env.LINE_CHANNEL_SECRET || process.env.CHANNEL_SECRET || ''
@@ -14,7 +14,7 @@ const verifySignature = (body: string, signature: string | null) => {
     const b = Buffer.from(signature, 'utf8')
     if (a.length !== b.length) return false
     return timingSafeEqual(a, b)
-  } catch (e) {
+  } catch {
     return false
   }
 }
@@ -43,10 +43,10 @@ export async function POST(request: Request) {
     return new Response('invalid signature', { status: 401 })
   }
 
-  let json: any
+  let json: { events?: { type?: string; message?: { type?: string; text?: string }; replyToken?: string; source?: { userId?: string } }[] }
   try {
     json = JSON.parse(bodyText)
-  } catch (e) {
+  } catch {
     return new Response('bad request', { status: 400 })
   }
 
@@ -55,9 +55,9 @@ export async function POST(request: Request) {
   for (const ev of events) {
     try {
       if (ev.type === 'message' && ev.message?.type === 'text') {
-        const text: string = ev.message.text.trim()
+        const text: string = ev.message.text?.trim() || ''
         const lower = text.toLowerCase()
-        const replyToken = ev.replyToken
+        const replyToken = ev.replyToken || ''
         const userId = ev.source?.userId || null
 
         // Check for existing draft
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
               if (dateMatch) {
                 draft.returnDate = text
                 // compute days (simple)
-                const d1 = new Date(draft.pickupDate)
+                const d1 = new Date(draft.pickupDate!)
                 const d2 = new Date(draft.returnDate)
                 const diffDays = Math.max(1, Math.ceil((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24)))
                 const cars = getAllCars()
@@ -160,7 +160,7 @@ export async function POST(request: Request) {
           // create draft
           setDraft(userId, {
             stage: 'awaiting_car_selection'
-          } as any)
+          })
 
           const cars = getAllCars()
           const lines = cars.slice(0, 6).map(c => `${c.id}) ${c.manufacturer} ${c.model} — ${formatThaiPrice(c.price_per_day)} / วัน`)
@@ -171,8 +171,8 @@ export async function POST(request: Request) {
         // default fallback
         await reply(replyToken, [{ type: 'text', text: 'ขออภัย ผมไม่เข้าใจคำสั่ง พิมพ์ "รายการ" เพื่อดูรถ หรือ "จอง" เพื่อเริ่มจอง' }])
       }
-    } catch (e) {
-      console.error('Event handling error', e)
+    } catch (error) {
+      console.error('Event handling error', error)
     }
   }
 

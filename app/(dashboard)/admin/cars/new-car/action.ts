@@ -8,7 +8,7 @@ export async function addNewCar(newCarData: Car)
     const supabase = await createClient();
     const {data: {user}} = await supabase.auth.getUser()
 
-    const {data, error} = await supabase.schema('elite_rentals')
+    const {data, error} = await supabase
         .from("cars").insert({
             owner_id: user!.id,
             ...newCarData

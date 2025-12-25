@@ -3,12 +3,9 @@ import React from 'react'
 import { initLiff, isInLiff } from '@/lib/line/liff'
 
 export default function ChatLauncher({ liffId }: { liffId: string }) {
-  const [inited, setInited] = React.useState(false)
-
   const openLiff = async () => {
     try {
       await initLiff(liffId)
-      setInited(true)
     } catch (e) {
       console.error('LIFF init failed', e)
     }
