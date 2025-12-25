@@ -3,6 +3,27 @@ import { getAllCars, formatThaiPrice } from '@/lib/data/mockCars'
 import { getDraft, setDraft, confirmBooking } from '@/lib/data/bookings'
 import { sendBookingConfirmation } from '@/lib/line/messaging'
 
+// Type definitions for LINE webhook events
+interface LineMessage {
+  type?: string
+  text?: string
+}
+
+interface LineSource {
+  userId?: string
+}
+
+interface LineEvent {
+  type?: string
+  message?: LineMessage
+  replyToken?: string
+  source?: LineSource
+}
+
+interface LineWebhookBody {
+  events?: LineEvent[]
+}
+
 const CHANNEL_SECRET = process.env.LINE_CHANNEL_SECRET || process.env.CHANNEL_SECRET || ''
 const LINE_ACCESS_TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN || ''
 
@@ -43,7 +64,7 @@ export async function POST(request: Request) {
     return new Response('invalid signature', { status: 401 })
   }
 
-  let json: { events?: { type?: string; message?: { type?: string; text?: string }; replyToken?: string; source?: { userId?: string } }[] }
+  let json: LineWebhookBody
   try {
     json = JSON.parse(bodyText)
   } catch {
@@ -100,10 +121,10 @@ export async function POST(request: Request) {
 
             if (draft.stage === 'awaiting_return_date') {
               const dateMatch = /^\d{4}-\d{2}-\d{2}$/.test(text)
-              if (dateMatch) {
+              if (dateMatch && draft.pickupDate) {
                 draft.returnDate = text
                 // compute days (simple)
-                const d1 = new Date(draft.pickupDate!)
+                const d1 = new Date(draft.pickupDate)
                 const d2 = new Date(draft.returnDate)
                 const diffDays = Math.max(1, Math.ceil((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24)))
                 const cars = getAllCars()

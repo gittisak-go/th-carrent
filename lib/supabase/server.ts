@@ -3,7 +3,7 @@ import type {SupabaseClient} from '@supabase/supabase-js'
 import {cookies} from 'next/headers'
 import {Database} from '@/database.types'
 
-// Helper type that maps elite_rentals schema to public for easier access
+// Helper type that allows tables to be accessed from both public and elite_rentals schemas
 type PublicDatabase = {
     public: Database['elite_rentals']
 } & Database

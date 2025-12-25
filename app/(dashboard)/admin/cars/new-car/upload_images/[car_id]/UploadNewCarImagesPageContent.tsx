@@ -77,7 +77,7 @@ export default function UploadNewCarImagesPageContent({car_id}: {  car_id: strin
         const {error} = await supabase
             .from('cars')
             .update({img_urls: imageUrls})
-            .eq('id', parseInt(car_id));
+            .eq('id', Number(car_id));
 
         if (error)
             toast.error(error.message);

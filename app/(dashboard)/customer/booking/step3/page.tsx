@@ -63,7 +63,7 @@ export default async function BookingStep3({searchParams}: searchParamsType)
 
                 <div className="flex flex-col items-center gap-4 w-full z-10">
                     <Image src={car.img_urls[0]} alt={`${car.manufacturer} ${car.model}`}
-                         className="rounded-lg" width={400} height={300} unoptimized />
+                         className="rounded-lg" width={400} height={300} />
                     <h3 className="text-xl font-semibold">{car.manufacturer} {car.model}</h3>
                 </div>
 
