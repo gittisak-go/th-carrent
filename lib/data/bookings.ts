@@ -4,8 +4,6 @@
  * - bookings: confirmed bookings array
  */
 
-import { getAllCars } from '@/lib/data/mockCars'
-
 type DraftStage = 'awaiting_car_selection' | 'awaiting_pickup_date' | 'awaiting_return_date' | 'awaiting_confirm'
 
 export type BookingDraft = {

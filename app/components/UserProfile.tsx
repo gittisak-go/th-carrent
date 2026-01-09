@@ -26,9 +26,10 @@ export default function UserProfile()
             setUserAvatar(session.data.session?.user.user_metadata.picture)
             setUserName(session.data.session?.user.user_metadata.display_name || session.data.session?.user.user_metadata.full_name)
 
-            supabase.auth.onAuthStateChange((_event, session) =>
+            supabase.auth.onAuthStateChange((_event: unknown, session: unknown) =>
             {
-                setIsUserAuthenticated(session?.user.email !== undefined);
+                const sess = session as { user?: { email?: string } } | null
+                setIsUserAuthenticated(sess?.user?.email !== undefined);
             });
         }
 

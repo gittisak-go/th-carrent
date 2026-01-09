@@ -1,6 +1,6 @@
 # th-carrent
 
-![th-carrent](https://elite-rentals.vercel.app/images/social-media-image.jpg)
+![th-carrent](https://udcar.rent/images/social-media-image.jpg)
 
 ## Overview
 

@@ -74,10 +74,10 @@ export default function UploadNewCarImagesPageContent({car_id}: {  car_id: strin
         }
 
         // Update the newly created car images url column.
-        const {error} = await supabase.schema('elite_rentals')
+        const {error} = await supabase
             .from('cars')
             .update({img_urls: imageUrls})
-            .eq('id', car_id);
+            .eq('id', Number(car_id));
 
         if (error)
             toast.error(error.message);

@@ -3,6 +3,7 @@ import {Car} from "@/lib/types/models";
 import {rentTimes} from "@/lib/types/rentTimes";
 import {createClient} from "@/lib/supabase/server";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
     title: 'Booking Complete | th-carrent',
@@ -61,8 +62,8 @@ export default async function BookingStep3({searchParams}: searchParamsType)
                 <CongratsText className='md:hidden text-center z-10 mb-8'/>
 
                 <div className="flex flex-col items-center gap-4 w-full z-10">
-                    <img src={car.img_urls[0]} alt={`${car.manufacturer} ${car.model}`}
-                         className="rounded-lg"/>
+                    <Image src={car.img_urls[0]} alt={`${car.manufacturer} ${car.model}`}
+                         className="rounded-lg" width={400} height={300} />
                     <h3 className="text-xl font-semibold">{car.manufacturer} {car.model}</h3>
                 </div>
 
@@ -109,7 +110,7 @@ async function saveBookingDetails(bookingDetails: {
 
     const {data: {user}} = await supabase.auth.getUser()
 
-    const {error} = await supabase.schema('elite_rentals')
+    const {error} = await supabase
         .from("bookings").insert({
             car_id: bookingDetails.carId,
             checkout_id: bookingDetails.checkoutId,
