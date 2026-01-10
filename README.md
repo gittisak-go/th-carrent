@@ -1,6 +1,6 @@
 # th-carrent
 
-![th-carrent](https://udcar.rent/images/social-media-image.jpg)
+![th-carrent](https://th-carrent.com/images/social-media-image.jpg)
 
 ## Overview
 
