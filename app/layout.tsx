@@ -41,12 +41,12 @@ export const metadata = {
     openGraph: {
         title: "Rungroj Car Rental | รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์",
         description: "บริการรถเช่าในจังหวัดอุดรธานี — ค้นหาและจองรถพร้อมรับที่สนามบิน อุดรธานี",
-        url: "https://udcar.rent",
+        url: "https://th-carrent.com",
         siteName: 'th-carrent',
         type: "website",
         images: [
             {
-                url: "https://udcar.rent/images/social-media-image.jpg",
+                url: "https://th-carrent.com/images/social-media-image.jpg",
                 alt: "th-carrent Social Media Image",
             },
         ],
@@ -56,7 +56,7 @@ export const metadata = {
         card: "summary_large_image",
         title: "Rungroj Car Rental | รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์",
         description: "บริการรถเช่าในจังหวัดอุดรธานี — ค้นหาและจองรถพร้อมรับที่สนามบิน อุดรธานี",
-        images: ["https://udcar.rent/images/social-media-image.jpg"],
+        images: ["https://th-carrent.com/images/social-media-image.jpg"],
     },
 
     robots: {
