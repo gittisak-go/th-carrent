@@ -24,30 +24,37 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
     const pickupDates = rentDate['pickup-date'].split('-');
     const pickupTime = rentTimes.find(time => time.value == rentDate['pickup-time'])?.label;
 
-    const [isRedirectingToStripe, setIsRedirectingToStripe] = useState(false)
+    const [isRedirectingToPromptPay, setIsRedirectingToPromptPay] = useState(false)
 
     const handleCheckout = async (e: FormEvent<HTMLFormElement>) =>
     {
         e.preventDefault();
-        setIsRedirectingToStripe(true);
+        setIsRedirectingToPromptPay(true);
 
+        // สร้าง URL สำหรับหน้า PromptPay พร้อมข้อมูลการจอง
+        const baseParams = window.location.href.split('?')[1];
+        const carName = `${car.manufacturer} ${car.model}`;
+        const totalPrice = car.price_per_day * rentDaysCount;
+        
         const {url, error} = await createCheckoutSession({
-                name: `${car.manufacturer} ${car.model}`,
-                price: car.price_per_day * rentDaysCount,
+                name: carName,
+                price: totalPrice,
                 imageUrls: car.img_urls
             },
-            `${process.env.NEXT_PUBLIC_BASE_URL}/customer/booking/step3?${window.location.href.split('?')[1]}&session_id={CHECKOUT_SESSION_ID}`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/customer/booking/step3?${baseParams}`,
             window.location.href);
 
 
         if (error || !url)
         {
-            toast.error(`Failed to redirect to checkout: ${error}`);
-            setIsRedirectingToStripe(false);
+            toast.error(`ไม่สามารถดำเนินการต่อได้: ${error}`);
+            setIsRedirectingToPromptPay(false);
             return;
         }
 
-        window.location.href = url;
+        // เพิ่มข้อมูลเพิ่มเติมใน URL สำหรับหน้า PromptPay
+        const promptPayUrl = url + `&car_name=${encodeURIComponent(carName)}&total_price=${totalPrice}`;
+        window.location.href = promptPayUrl;
     };
 
     return (
@@ -88,8 +95,8 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
                     </span>
 
                     <form onSubmit={handleCheckout} id='checkoutForm'>
-                        <button disabled={isRedirectingToStripe} className="btn btn-primary w-full">
-                            {isRedirectingToStripe ?
+                        <button disabled={isRedirectingToPromptPay} className="btn btn-primary w-full">
+                            {isRedirectingToPromptPay ?
                                 <><MoonLoader size='20'/> กำลังเปลี่ยนเส้นทาง</> :
                                 <h5>ดำเนินการชำระเงิน</h5>
                             }
