@@ -59,30 +59,30 @@ export function LoginPage({isAdmin}: { isAdmin: boolean })
 
             <LogoLink className='mx-auto'/>
 
-            <h1 className='text-2xl text-center'>Log in</h1>
+            <h1 className='text-2xl text-center'>เข้าสู่ระบบ</h1>
 
             <div className='flex items-center justify-center gap-4'>
                 <ProviderButton icon={<GoogleLogo/>} onClickHandler={handleOAuthSignIn}/>
                 <ProviderButton icon={<FacebookLogo/>}
-                                onClickHandler={() => toast('Facebook accounts will be supported soon.')}/>
+                                onClickHandler={() => toast('Facebook accounts will be supported soon. → เร็วๆ นี้จะรองรับบัญชี Facebook')}/>
                 <ProviderButton icon={<AppleLogo/>}
-                                onClickHandler={() => toast('Apple accounts will be supported soon.')}/>
+                                onClickHandler={() => toast('Apple accounts will be supported soon. → เร็วๆ นี้จะรองรับบัญชี Apple')}/>
             </div>
 
-            <div className="divider">OR</div>
+            <div className="divider">หรือ</div>
 
             <div className='flex flex-col gap-4'>
-                <TextBox label='Email' type='email' id='email' placeholder='kinangh98@gmail.com'
+                <TextBox label='อีเมล' type='email' id='email' placeholder='example@gmail.com'
                          defaultValue={state.data.email}/>
-                <PasswordTextBox label='Password' id='password' placeholder='*****'
+                <PasswordTextBox label='รหัสผ่าน' id='password' placeholder='*****'
                                  defaultValue={state.data.password}/>
                 <Turnstile theme={theme.resolvedTheme === 'dark' ? 'dark' : 'light'} size='flexible'
                            sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_KEY as string}/>
-                <FormSubmitButton text='Log in' isPending={isPending} icon={<LoginIcon/>}/>
+                <FormSubmitButton text='เข้าสู่ระบบ' isPending={isPending} icon={<LoginIcon/>}/>
 
-                <span className='text-sm'>Don&#39;t have an account? <Link
+                <span className='text-sm'>ยังไม่มีบัญชี? <Link
                     href={isAdmin ? '/auth/admin/signup' : '/auth/customer/signup'}
-                    className='link link-primary link-hover font-medium'>Sign up</Link>
+                    className='link link-primary link-hover font-medium'>สมัครสมาชิก</Link>
                     </span>
             </div>
         </form>

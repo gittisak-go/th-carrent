@@ -9,6 +9,7 @@ import {rentTimes} from "@/lib/types/rentTimes";
 import {createCheckoutSession} from "@/app/(dashboard)/customer/booking/step1/action";
 import {toast} from "react-toastify";
 import {MoonLoader} from "react-spinners";
+import {formatThaiPrice} from "@/lib/data/mockCars";
 
 type BookingInfoType = {
     car: Car,
@@ -53,9 +54,9 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
         <div className="flex flex-col gap-8 py-10 px-4 md:px-8 lg:px-14">
 
             <ul className="steps mx-auto w-full max-w-[1000px]">
-                <li className="step step-primary">Details</li>
-                <li className="step ">Checkout</li>
-                <li className="step">Done!</li>
+                <li className="step step-primary">รายละเอียด</li>
+                <li className="step ">ชำระเงิน</li>
+                <li className="step">เสร็จสิ้น!</li>
             </ul>
 
             <div className="flex flex-col lg:flex-row justify-evenly lg:items-start gap-8">
@@ -63,34 +64,34 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
 
                 {/* Booking Details Pane */}
                 <div className="flex flex-col gap-4 lg:w-2/5  h-auto bg-base-100 p-6 rounded-2xl shadow-lg">
-                    <h2 className='text-2xl font-bold'>Booking details</h2>
+                    <h2 className='text-2xl font-bold'>รายละเอียดการจอง</h2>
 
-                    <BookingItem title={'Rent Duration'} icon={<FaCalendarDays className='text-primary'/>}>
-                        {rentDaysCount} days
+                    <BookingItem title={'ระยะเวลาเช่า'} icon={<FaCalendarDays className='text-primary'/>}>
+                        {rentDaysCount} วัน
                     </BookingItem>
 
-                    <BookingItem title={'Pick-up Date & Time'} icon={<FaDownLong className='text-primary'/>}>
+                    <BookingItem title={'วันและเวลารับรถ'} icon={<FaDownLong className='text-primary'/>}>
                         {pickupDates[0]} - {pickupTime}
                     </BookingItem>
 
-                    <BookingItem title={'Drop-off Date & Time'} icon={<FaUpLong className='text-primary'/>}>
+                    <BookingItem title={'วันและเวลาคืนรถ'} icon={<FaUpLong className='text-primary'/>}>
                         {pickupDates[1]} - 12:00 AM
                     </BookingItem>
 
-                    <BookingItem title={'Delivery Location'} icon={<FaMapLocation className='text-primary'/>}/>
+                    <BookingItem title={'สถานที่ส่งรถ'} icon={<FaMapLocation className='text-primary'/>}/>
                     <BookingMap className='w-full h-56 rounded-lg overflow-hidden '
                                 defaultLocation={deliveryLocation}/>
 
                     <span className="flex justify-between items-center gap-2 text-primary text-xl font-semibold">
-                        <span>Total Price</span>
-                        ${car.price_per_day * rentDaysCount}
+                        <span>ราคารวม</span>
+                        {formatThaiPrice(car.price_per_day * rentDaysCount)}
                     </span>
 
                     <form onSubmit={handleCheckout} id='checkoutForm'>
                         <button disabled={isRedirectingToStripe} className="btn btn-primary w-full">
                             {isRedirectingToStripe ?
-                                <><MoonLoader size='20'/> Redirecting</> :
-                                <h5>Proceed to Checkout</h5>
+                                <><MoonLoader size='20'/> กำลังเปลี่ยนเส้นทาง</> :
+                                <h5>ดำเนินการชำระเงิน</h5>
                             }
                         </button>
                     </form>
