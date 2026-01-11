@@ -30,30 +30,30 @@ export default function SignupPage({isAdmin}: { isAdmin: boolean })
 
             <LogoLink/>
 
-            <h1 className='z-10 text-2xl text-center'>Sign up</h1>
+            <h1 className='z-10 text-2xl text-center'>สมัครสมาชิก</h1>
 
             <div className='flex items-center justify-center gap-4'>
                 <ProviderButton icon={<GoogleLogo/>} onClickHandler={handleOAuthSignIn}/>
                 <ProviderButton icon={<FacebookLogo/>}
-                                onClickHandler={() => toast('Facebook accounts will be supported soon.')}/>
+                                onClickHandler={() => toast('เร็วๆ นี้จะรองรับบัญชี Facebook')}/>
                 <ProviderButton icon={<AppleLogo/>}
-                                onClickHandler={() => toast('Apple accounts will be supported soon.')}/>
+                                onClickHandler={() => toast('เร็วๆ นี้จะรองรับบัญชี Apple')}/>
             </div>
 
-            <div className="divider">OR</div>
+            <div className="divider">หรือ</div>
 
             <div className='z-10 flex flex-col gap-4'>
                 <Link href={isAdmin ? '/auth/admin/signup-with-email/' : '/auth/customer/signup-with-email/'}
                       className='btn btn-primary'>
-                    <span>Continue With Email</span>
+                    <span>ดำเนินการด้วยอีเมล</span>
                     <EnvelopeIcon/>
                 </Link>
-                <span className='text-sm'>Already have an account? <Link
+                <span className='text-sm'>มีบัญชีอยู่แล้ว? <Link
                     href={isAdmin ? '/auth/admin/login' : '/auth/customer/login'}
-                    className='link link-primary link-hover font-medium'>Log in</Link></span>
-                <span className='text-xs'>By signing up, you agree to our <a
+                    className='link link-primary link-hover font-medium'>เข้าสู่ระบบ</Link></span>
+                <span className='text-xs'>การสมัครสมาชิกถือว่าคุณยอมรับ <a
                     className='link link-primary link-hover font-medium'
-                    href={`/privacy-policy`}>Privacy Policy</a>.</span>
+                    href={`/privacy-policy`}>นโยบายความเป็นส่วนตัว</a>ของเรา</span>
             </div>
         </div>
     );

@@ -1,75 +1,104 @@
-# th-carrent
+# th-carrent - รุ่งโรจน์ คาร์เร้นท์
 
 ![th-carrent](https://udcar.rent/images/social-media-image.jpg)
 
-## Overview
+## ภาพรวม (Overview)
 
-`th-carrent` is a car rental platform designed to provide a seamless experience for both administrators and customers. It features an intuitive UI, robust authentication, and dynamic pages for managing cars, bookings, and more.
+`th-carrent` เป็นแพลตฟอร์มเช่ารถที่ออกแบบมาสำหรับธุรกิจ "รุ่งโรจน์ คาร์เร้นท์" ในจังหวัดอุดรธานี ระบบรองรับทั้งภาษาไทยและระบบชำระเงินผ่าน PromptPay
 
-## Features
+## คุณสมบัติหลัก (Features)
 
-- Dynamic admin dashboard for managing bookings, cars, and more.
-- Customer dashboard with car browsing and booking capabilities.
-- Secure authentication system powered by Supabase.
-- Responsive design optimized for both desktop and mobile devices.
-- Modern UI and intuitive workflows.
+- 🌐 **ภาษาไทยทั้งระบบ** - UI และเนื้อหาเป็นภาษาไทยเต็มรูปแบบ
+- 💰 **สกุลเงินบาทไทย (THB)** - แสดงราคาเป็นบาท ไม่ใช่ดอลลาร์
+- 💳 **ชำระเงินผ่าน PromptPay** - รองรับการโอนเงินผ่าน QR Code PromptPay
+- 🚗 **จัดการรถเช่า** - ระบบจัดการรถและการจองสำหรับผู้ดูแล
+- 📱 **รองรับมือถือ** - ออกแบบให้ใช้งานได้ดีทั้งบนมือถือและคอมพิวเตอร์
+- 🔐 **ระบบความปลอดภัย** - Authentication ผ่าน Supabase
+- 📍 **แผนที่** - แสดงที่ตั้งสาขาและสถานที่ส่งรถด้วย Leaflet
 
-## Technologies Used
+## เทคโนโลยีที่ใช้ (Technologies)
 
-- **Next.js 15**
-- **Supabase**
-- **Stripe**
-- **DaisyUI**
-- **Cloudflare Turnstile**
-- **FilePond**
-- **Framer Motion**
-- **Leaflet**
-- **Next Themes**
-- **React Icons**
-- **Toastify**
-- **Tailwind CSS**
-- **TypeScript**
+- **Next.js 15** - React Framework
+- **Supabase** - Backend และ Authentication
+- **PromptPay** - ระบบชำระเงินไทย (แทนที่ Stripe)
+- **DaisyUI** - UI Components
+- **Cloudflare Turnstile** - Bot Protection
+- **FilePond** - Upload รูปภาพรถ
+- **Framer Motion** - Animations
+- **Leaflet** - Maps
+- **Next Themes** - Dark/Light Mode
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type Safety
 
-## Deployment
+## การติดตั้งและใช้งาน (Installation & Deployment)
 
-### Deploy to Vercel
+### ติดตั้งใช้งานบน Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/th-carrent)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gittisak-go/th-carrent)
 
-1. Click the "Deploy" button above or manually deploy via [Vercel Dashboard](https://vercel.com/dashboard)
-2. Connect your GitHub repository
-3. Configure environment variables:
-   - `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anonymous key
-   - Add any additional Stripe or other API keys as needed
-4. Deploy and enjoy!
+1. คลิกปุ่ม "Deploy" หรือ Deploy ผ่าน [Vercel Dashboard](https://vercel.com/dashboard)
+2. เชื่อมต่อกับ GitHub repository
+3. ตั้งค่า Environment Variables:
+   - `NEXT_PUBLIC_SUPABASE_URL` - URL ของ Supabase project
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Supabase anonymous key
+   - `NEXT_PUBLIC_OAUTH_REDIRECT_URL` - URL สำหรับ OAuth redirect (เช่น https://yourdomain.com/auth/callback/)
+   - `NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_KEY` - Cloudflare Turnstile site key
+   - `NEXT_PUBLIC_BASE_URL` - Base URL ของเว็บไซต์ (เช่น https://yourdomain.com)
+   - `NEXT_PUBLIC_CURRENCY` - ฿ (สัญลักษณ์เงินบาท)
+   - `NEXT_PUBLIC_LOCALE` - th_TH (ภาษาไทย)
+4. Deploy!
 
-### Local Development
+### การพัฒนาบนเครื่อง (Local Development)
 
 ```bash
-# Install dependencies
+# ติดตั้ง dependencies
 npm install
 
-# Run development server
+# รัน development server
 npm run dev
 
-# Build for production
+# Build สำหรับ production
 npm run build
 
-# Start production server
+# รัน production server
 npm run start
+
+# รัน linter
+npm run lint
 ```
 
-Make sure to create a `.env.local` file with your environment variables before running locally.
+สร้างไฟล์ `.env.local` และเพิ่มตัวแปรสภาพแวดล้อมตามตัวอย่างใน `.env.local.example`
 
-## Contact
+## ข้อมูลธุรกิจ (Business Information)
 
-For any inquiries or feedback, feel free to reach out at [kinangh98@gmail.com](mailto:kinangh98@gmail.com).
+**รุ่งโรจน์ คาร์เร้นท์ (Rungroj Car Rental)**
+- 📍 ที่ตั้ง: อุดรธานี, ประเทศไทย
+- 🌐 เว็บไซต์: th-carrental.com
+- ☎️ โทร: 086-634-8619, 096-363-8519
+- 📱 LINE: @rungroj
+- 📘 Facebook: facebook.com/RungrojCarRental
+- 🎵 TikTok: @rungrojcarrent
+- 📺 YouTube: @RungrojCarRental
+- 📧 Email: rungrojcarrentudon@gmail.com
 
-## Contributing
+## การชำระเงิน (Payment)
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue if you have any suggestions or improvements.
+ระบบใช้ **PromptPay** สำหรับการชำระเงิน:
+- เบอร์ PromptPay: 086-634-8619, 096-363-8519
+- ลูกค้าสามารถโอนเงินผ่าน Mobile Banking หรือสแกน QR Code
+- ส่งหลักฐานการโอนผ่าน LINE: @rungroj
 
-## License
+## ติดต่อสอบถาม (Contact)
 
-This project is licensed under the MIT License.
+สำหรับข้อสอบถามหรือข้อเสนอแนะ กรุณาติดต่อ:
+- Email: rungrojcarrentudon@gmail.com
+- LINE: @rungroj
+- โทร: 086-634-8619
+
+## การมีส่วนร่วม (Contributing)
+
+ยินดีรับ Pull Requests! หากมีข้อเสนอแนะหรือพบปัญหา กรุณาเปิด Issue
+
+## ใบอนุญาต (License)
+
+โปรเจกต์นี้อยู่ภายใต้ MIT License

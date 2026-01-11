@@ -30,6 +30,7 @@ export default function Footer() {
                 <h6 className="footer-title">เมนู</h6>
                 <Link href={'/'} className="link link-hover">หน้าแรก</Link>
                 <Link href={'/customer/cars'} className="link link-hover">เช่ารถ</Link>
+                <Link href={'/rental-terms'} className="link link-hover">เงื่อนไขการเช่า</Link>
                 <Link href={'/contact'} className="link link-hover">ติดต่อเรา/สาขา</Link>
             </nav>
             <nav>

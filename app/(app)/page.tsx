@@ -142,7 +142,7 @@ export default async function HomePage()
                             variants={fadeInUp}
                         >
                             <h2 className="text-4xl font-bold  mb-12 text-primary">
-                                Why Choose Us
+                                ทำไมต้องเลือกเรา
                             </h2>
                             <p className="text-lg">
                                 We go above and beyond to provide you with an unforgettable experience. From competitive
@@ -157,21 +157,21 @@ export default async function HomePage()
                         >
                             <WhyChooseUsItem
                                 Icon={FaSackDollar}
-                                title="Affordable Pricing"
-                                description="Get access to premium cars at prices that suit your budget. We believe luxury shouldn&#39;t come at an exorbitant cost."
+                                title="ราคาย่อมเยา"
+                                description="เข้าถึงรถคุณภาพในราคาที่เหมาะกับงบประมาณของคุณ เราเชื่อว่ารถดีไม่จำเป็นต้องแพง"
                             />
 
                             <WhyChooseUsItem
                                 Icon={FaCarSide}
-                                title="Wide Selection"
-                                description="Choose from sedans, SUVs, and more from trusted owners. We’ve got a vehicle for every need, preference, and destination."
+                                title="รถหลากหลาย"
+                                description="เลือกจากรถเก๋ง, SUV และอื่นๆ จากผู้ให้บริการที่เชื่อถือได้ เรามีรถสำหรับทุกความต้องการและทุกจุดหมาย"
                                 className="sm:ml-16"
                             />
 
                             <WhyChooseUsItem
                                 Icon={FaHeadset}
-                                title="24/7 Support"
-                                description="We’re here to help you anytime, anywhere. Your satisfaction and convenience are our top priorities."
+                                title="บริการตลอด 24/7"
+                                description="เราพร้อมช่วยเหลือคุณทุกเมื่อ ทุกที่ ความพึงพอใจและความสะดวกสบายของคุณคือสิ่งสำคัญที่สุดสำหรับเรา"
                                 className="sm:ml-8"
                             />
                         </m.div>
@@ -203,14 +203,14 @@ export default async function HomePage()
                         className="text-4xl font-bold text-center  mb-12 text-primary"
                         variants={fadeInFromBottom}
                     >
-                        What Our Users Say
+                        ลูกค้าของเราพูดถึงเรา
                     </m.h2>
                     <m.p
                         className="text-lg mb-8 text-center"
                         variants={fadeInFromBottom}
                     >
-                        We take pride in delivering top-notch service and making car rentals a delightful experience.
-                        Hear what our satisfied customers have to say!
+                        เราภูมิใจที่มอบบริการชั้นยอดและทำให้การเช่ารถเป็นประสบการณ์ที่น่าประทับใจ
+                        ฟังสิ่งที่ลูกค้าที่พึงพอใจของเราพูด!
                     </m.p>
                     <m.div
                         className="grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -218,18 +218,18 @@ export default async function HomePage()
                     >
                         {[
                             {
-                                name: "Jane Doe",
-                                feedback: "The easiest car rental experience I've ever had!",
+                                name: "คุณสมชาย",
+                                feedback: "บริการดีมาก เช่ารถง่าย สะดวกสบาย!",
                                 image: user1,
                             },
                             {
-                                name: "John Smith",
-                                feedback: "Fantastic customer support and great prices!",
+                                name: "คุณสมศรี",
+                                feedback: "รถสวย ราคาดี บริการเยี่ยม!",
                                 image: user2,
                             },
                             {
-                                name: "Christopher Kaiser",
-                                feedback: "Highly recommended! Hassle-free and reliable service.",
+                                name: "คุณประยุทธ์",
+                                feedback: "แนะนำเลย! บริการดี ไม่มีปัญหา น่าเชื่อถือ",
                                 image: user3,
                             },
                         ].map(({name, feedback, image}, index) => (
@@ -271,21 +271,21 @@ export default async function HomePage()
                         className="text-4xl font-semibold text-center  mb-12 text-primary"
                         variants={fadeInFromBottom}
                     >
-                        How It Works
+                        วิธีการเช่า
                     </m.h2>
                     <m.ol
                         className="steps steps-vertical md:steps-horizontal mx-auto w-full text-neutral-content"
                         variants={stagger}
                     >
-                        {["Search", "Book", "Drive"].map((step, index) => (
+                        {["ค้นหา", "จอง", "ขับ"].map((step, index) => (
                             <m.li
                                 key={index}
                                 className="step step-primary"
                                 variants={fadeInFromLeft}
                             >
-                                {step}: {index === 0 && "Browse through our extensive car listings."}
-                                {index === 1 && "Choose your car and make a secure booking."}
-                                {index === 2 && "Pick up your car and hit the road!"}
+                                {step}: {index === 0 && "เลือกดูรถที่มีให้บริการ"}
+                                {index === 1 && "เลือกรถและทำการจองอย่างปลอดภัย"}
+                                {index === 2 && "รับรถและออกเดินทาง!"}
                             </m.li>
                         ))}
                     </m.ol>
@@ -303,17 +303,17 @@ export default async function HomePage()
                         className="text-4xl font-bold mb-6"
                         variants={fadeInFromBottom}
                     >
-                        Ready to Book Your Ride?
+                        พร้อมจองรถของคุณแล้วหรือยัง?
                     </m.h2>
                     <m.p
                         className="text-lg mb-8"
                         variants={fadeInFromBottom}
                     >
-                        Don’t wait! Find your dream car today and start your adventure.
+                        อย่ารอช้า! ค้นหารถในฝันของคุณวันนี้และเริ่มต้นการผจญภัย
                     </m.p>
                     <m.div variants={slideInFromRight}>
                         <Link href={"/auth/customer/login/"} className="btn btn-primary px-8 text-lg">
-                            Rent Now
+                            เช่ารถเลย
                         </Link>
                     </m.div>
                 </m.section>
