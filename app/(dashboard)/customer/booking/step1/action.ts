@@ -5,10 +5,12 @@
  * แทนที่ Stripe ด้วยระบบ PromptPay QR Code
  */
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function createBookingWithPromptPay(carDetails: {
     name: string;
     price: number;
     imageUrls: string[]
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 }, successUrl: string, cancelUrl: string)
 {
     const data: { url: string | null, error: string | null, bookingId?: string } = {url: null, error: null};
