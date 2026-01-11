@@ -88,13 +88,13 @@ export default function PromptPayPaymentPage() {
                                             <div className="text-sm opacity-70">{pp.name}</div>
                                         </div>
                                     </div>
-                                    <div className="bg-white p-4 rounded-lg flex justify-center items-center">
+                                    <div className="bg-white dark:bg-base-300 p-4 rounded-lg flex justify-center items-center">
                                         {/* Placeholder for QR Code */}
                                         <div className="text-center">
-                                            <div className="w-48 h-48 bg-gray-200 rounded-lg flex items-center justify-center mb-2">
-                                                <span className="text-sm text-gray-500">QR Code PromptPay<br/>{pp.number}</span>
+                                            <div className="w-48 h-48 bg-base-300 rounded-lg flex items-center justify-center mb-2">
+                                                <span className="text-sm text-base-content opacity-60">QR Code PromptPay<br/>{pp.number}</span>
                                             </div>
-                                            <p className="text-xs text-gray-600">
+                                            <p className="text-xs opacity-70">
                                                 สแกนเพื่อจ่ายผ่าน Mobile Banking
                                             </p>
                                         </div>

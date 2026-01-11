@@ -41,8 +41,7 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
                 price: totalPrice,
                 imageUrls: car.img_urls
             },
-            `${process.env.NEXT_PUBLIC_BASE_URL}/customer/booking/step3?${baseParams}`,
-            window.location.href);
+            `${process.env.NEXT_PUBLIC_BASE_URL}/customer/booking/step3?${baseParams}`);
 
 
         if (error || !url)

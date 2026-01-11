@@ -64,9 +64,9 @@ export function LoginPage({isAdmin}: { isAdmin: boolean })
             <div className='flex items-center justify-center gap-4'>
                 <ProviderButton icon={<GoogleLogo/>} onClickHandler={handleOAuthSignIn}/>
                 <ProviderButton icon={<FacebookLogo/>}
-                                onClickHandler={() => toast('Facebook accounts will be supported soon. → เร็วๆ นี้จะรองรับบัญชี Facebook')}/>
+                                onClickHandler={() => toast('เร็วๆ นี้จะรองรับบัญชี Facebook')}/>
                 <ProviderButton icon={<AppleLogo/>}
-                                onClickHandler={() => toast('Apple accounts will be supported soon. → เร็วๆ นี้จะรองรับบัญชี Apple')}/>
+                                onClickHandler={() => toast('เร็วๆ นี้จะรองรับบัญชี Apple')}/>
             </div>
 
             <div className="divider">หรือ</div>
