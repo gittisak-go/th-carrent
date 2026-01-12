@@ -49,25 +49,25 @@ export default function SignupWithEmailPage({isAdmin}: { isAdmin: boolean })
 
             <LogoLink/>
 
-            <h1 className='text-2xl text-center'>Sign up</h1>
+            <h1 className='text-2xl text-center'>สมัครสมาชิก</h1>
 
             <div className='flex flex-col gap-4'>
-                <TextBox label='Email' type='email' id='email' placeholder='kinangh98@gmail.com'
+                <TextBox label='อีเมล' type='email' id='email' placeholder='example@gmail.com'
                          defaultValue={state.data.email}/>
-                <PasswordTextBox label='Password' id='password' placeholder='*****'
+                <PasswordTextBox label='รหัสผ่าน' id='password' placeholder='*****'
                          defaultValue={state.data.password}/>
-                <TextBox label='User Name' type='text' id='username' placeholder='Ahmad Kinan'
+                <TextBox label='ชื่อผู้ใช้' type='text' id='username' placeholder='ชื่อของคุณ'
                          defaultValue={state.data.username}/>
                 <Turnstile theme={theme.resolvedTheme === 'dark' ? 'dark' : 'light'} size='flexible'
                            sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_KEY as string}/>
-                <FormSubmitButton text='Sign up' isPending={isPending} icon={<LoginIcon/>}/>
+                <FormSubmitButton text='สมัครสมาชิก' isPending={isPending} icon={<LoginIcon/>}/>
 
-                <span className='text-sm'>Already have an account? <Link
+                <span className='text-sm'>มีบัญชีอยู่แล้ว? <Link
                     href={isAdmin ? '/auth/admin/login' : '/auth/customer/login'}
-                    className='link link-primary link-hover font-medium'>Log in</Link></span>
+                    className='link link-primary link-hover font-medium'>เข้าสู่ระบบ</Link></span>
 
-                <span className='text-xs'>By signing up, you agree to our <a
-                    className='link link-primary link-hover font-medium' href={`/privacy-policy`}>Privacy Policy</a>.</span>
+                <span className='text-xs'>การสมัครสมาชิกถือว่าคุณยอมรับ <a
+                    className='link link-primary link-hover font-medium' href={`/privacy-policy`}>นโยบายความเป็นส่วนตัว</a>ของเรา</span>
             </div>
         </form>
     );

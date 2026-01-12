@@ -25,11 +25,11 @@ function AdminNavBarItems({isSideBarItems}: { isSideBarItems: boolean })
         <>
             <li><NavBarLink href={'/admin/bookings'} isSideBarItem={isSideBarItems}>
                 {isSideBarItems && <FaCalendar/>}
-                Bookings</NavBarLink></li>
+                การจอง</NavBarLink></li>
             
             <li><NavBarLink href={'/admin/cars'} isSideBarItem={isSideBarItems}>
                 {isSideBarItems && <FaCar/>}
-                Cars</NavBarLink></li>
+                รถเช่า</NavBarLink></li>
         </>
     );
 }
@@ -40,7 +40,7 @@ function CustomerNavBarItems({isSideBarItems}: { isSideBarItems: boolean })
         <>
             <li><NavBarLink href={'/customer/bookings'} isSideBarItem={isSideBarItems}>
                 {isSideBarItems && <FaCalendar/>}
-                Bookings</NavBarLink></li>
+                การจองของฉัน</NavBarLink></li>
         </>
     );
 }
@@ -51,11 +51,11 @@ function HomePageNavBarItems({isSideBarItems}: { isSideBarItems: boolean })
         <>
             <li><NavBarLink href={'/customer'} isSideBarItem={isSideBarItems}>
                 {isSideBarItems && <FaCoins/>}
-                Rent</NavBarLink></li>
+                เช่ารถ</NavBarLink></li>
             <li>
                 <NavBarLink href={'/admin'} isSideBarItem={isSideBarItems}>
                     {isSideBarItems && <FaGear/>}
-                    Management</NavBarLink>
+                    จัดการระบบ</NavBarLink>
             </li>
         </>
     );
