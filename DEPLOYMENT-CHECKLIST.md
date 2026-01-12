@@ -1,11 +1,11 @@
-# Deployment Checklist for udcar.rent
+# Deployment Checklist for th-carrent.com
 
 ## ✅ Pre-Deployment Verification (Completed)
 
 - [x] All ESLint errors fixed
 - [x] All npm security vulnerabilities patched (0 vulnerabilities)
 - [x] Next.js upgraded to v15.5.9 (fixes critical security issues)
-- [x] Production URLs updated to udcar.rent
+- [x] Production URLs updated to th-carrent.com
 - [x] Build compiles successfully
 - [x] Thai localization verified
 
@@ -37,14 +37,14 @@
 
 3. **Add Custom Domains**
    - Go to Project Settings → Domains
-   - Add `udcar.rent`
-   - Add `www.udcar.rent` (optional, will redirect to main domain)
+   - Add `th-carrent.com`
+   - Add `www.th-carrent.com` (optional, will redirect to main domain)
 
 ### 2. Cloudflare DNS Configuration
 
 1. **Login to Cloudflare**
    - Go to [dash.cloudflare.com](https://dash.cloudflare.com)
-   - Select your domain `udcar.rent`
+   - Select your domain `th-carrent.com`
 
 2. **Add DNS Records**
    
@@ -60,9 +60,9 @@
 4. **Optional: Add Page Rule for www redirect**
    - Go to Rules → Page Rules
    - Create rule:
-     - URL: `www.udcar.rent/*`
+     - URL: `www.th-carrent.com/*`
      - Setting: Forwarding URL (301 Permanent Redirect)
-     - Destination: `https://udcar.rent/$1`
+     - Destination: `https://th-carrent.com/$1`
 
 ### 3. Supabase Configuration
 
@@ -79,7 +79,7 @@
 
 After deployment, verify:
 
-- [ ] Website loads at https://udcar.rent
+- [ ] Website loads at https://th-carrent.com
 - [ ] SSL certificate is valid (green padlock)
 - [ ] Meta tags display correctly (check with Facebook Debugger / Twitter Card Validator)
 - [ ] Thai language content displays properly

@@ -1,10 +1,10 @@
-# คู่มือการ Deploy สำหรับ udcar.rent
+# คู่มือการ Deploy สำหรับ th-carrent.com
 
-เอกสารนี้อธิบายขั้นตอนการตั้งค่า DNS บน Cloudflare และการเชื่อมต่อกับ Vercel สำหรับโดเมน `udcar.rent`
+เอกสารนี้อธิบายขั้นตอนการตั้งค่า DNS บน Cloudflare และการเชื่อมต่อกับ Vercel สำหรับโดเมน `th-carrent.com`
 
 ## ข้อกำหนดเบื้องต้น
 
-- บัญชี Cloudflare ที่มีสิทธิ์จัดการ DNS สำหรับ `udcar.rent`
+- บัญชี Cloudflare ที่มีสิทธิ์จัดการ DNS สำหรับ `th-carrent.com`
 - บัญชี Vercel ที่เชื่อมต่อกับ repository นี้
 - ตัวแปรสภาพแวดล้อม (Environment Variables) ที่ตั้งค่าไว้ใน Vercel
 
@@ -36,9 +36,9 @@
 ### 5. ตั้งค่า Page Rules (ถ้าจำเป็น)
 
 สร้าง Page Rule สำหรับ redirect www ไปยัง non-www:
-- URL: `www.udcar.rent/*`
+- URL: `www.th-carrent.com/*`
 - Setting: **Forwarding URL** (301 Permanent Redirect)
-- Destination: `https://udcar.rent/$1`
+- Destination: `https://th-carrent.com/$1`
 
 ## การตั้งค่าบน Vercel
 
@@ -62,7 +62,7 @@ NEXT_PUBLIC_LOCALE=th_TH
 ### 3. เพิ่ม Custom Domain
 
 - ไปที่ **Project Settings** > **Domains**
-- เพิ่ม `udcar.rent` และ `www.udcar.rent`
+- เพิ่ม `th-carrent.com` และ `www.th-carrent.com`
 - Vercel จะแสดงค่า DNS ที่ต้องการ — ให้ตรวจสอบว่าตรงกับที่ตั้งค่าใน Cloudflare
 
 ### 4. Deployment
@@ -71,8 +71,8 @@ NEXT_PUBLIC_LOCALE=th_TH
 
 ## การตรวจสอบหลัง Deploy
 
-1. เข้า `https://udcar.rent` เพื่อตรวจสอบว่าเว็บทำงานปกติ
-2. เข้า `https://www.udcar.rent` เพื่อตรวจสอบ redirect
+1. เข้า `https://th-carrent.com` เพื่อตรวจสอบว่าเว็บทำงานปกติ
+2. เข้า `https://www.th-carrent.com` เพื่อตรวจสอบ redirect
 3. ตรวจสอบ SSL certificate ว่าถูกต้อง
 
 ## หมายเหตุ

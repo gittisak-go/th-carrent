@@ -1,6 +1,6 @@
 # th-carrent - รุ่งโรจน์ คาร์เร้นท์
 
-![th-carrent](https://udcar.rent/images/social-media-image.jpg)
+![th-carrent](https://th-carrent.com/images/social-media-image.jpg)
 
 ## ภาพรวม (Overview)
 
