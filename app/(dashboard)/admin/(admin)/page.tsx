@@ -1,12 +1,12 @@
-﻿import { getAllCars } from "@/lib/data/mockCars";
+import { getAllCars } from "@/lib/data/mockCars";
 import Link from "next/link";
 import Image, {StaticImageData} from 'next/image';
 import carsCardImage from '@/public/images/admin-dashboard-cars-card.jpg';
 import bookingsCardImage from '@/public/images/admin-dashboard-bookings-card.jpeg';
 
 export const metadata = {
-    title: 'แดชบอร์ด | th-carrent - Admin',
-    description: 'ยินดีต้อนรับสู่แดชบอร์ดผู้ดูแลระบบ th-carrent จัดการการจองและรถยนต์ได้อย่างง่ายดาย',
+    title: 'แดชบอร์ด | Rungroj CarRental - Admin',
+    description: 'ยินดีต้อนรับสู่แดชบอร์ดผู้ดูแลระบบ Rungroj CarRental จัดการการจองและรถยนต์ได้อย่างง่ายดาย',
 };
 
 export default async function AdminDashboard()

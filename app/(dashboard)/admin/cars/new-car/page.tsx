@@ -1,8 +1,8 @@
-﻿import NewCarPageContent from "@/app/(dashboard)/admin/cars/new-car/NewCarPageContent";
+import NewCarPageContent from "@/app/(dashboard)/admin/cars/new-car/NewCarPageContent";
 
 export const metadata = {
-    title: 'Add New Car: Details | th-carrent - Admin',
-    description: 'Enter car details, including manufacturer, model, type, and pricing, within the th-carrent admin panel.',
+    title: 'Add New Car: Details | Rungroj CarRental - Admin',
+    description: 'Enter car details, including manufacturer, model, type, and pricing, within the Rungroj CarRental admin panel.',
 };
 
 export default function NewCarPage()

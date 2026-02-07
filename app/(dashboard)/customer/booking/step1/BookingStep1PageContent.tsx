@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import {Car} from "@/lib/types/models";
 import BookingCarDetails from "@/app/(dashboard)/customer/booking/step1/BookingCarDetails";
 import {FormEvent, ReactNode, useState} from "react";
@@ -10,6 +10,7 @@ import {createCheckoutSession} from "@/app/(dashboard)/customer/booking/step1/ac
 import {toast} from "react-toastify";
 import {MoonLoader} from "react-spinners";
 import {formatThaiPrice} from "@/lib/data/mockCars";
+import {createClient} from "@/lib/supabase/client";
 
 type BookingInfoType = {
     car: Car,
@@ -29,6 +30,15 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
     const handleCheckout = async (e: FormEvent<HTMLFormElement>) =>
     {
         e.preventDefault();
+
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            const redirect = encodeURIComponent(window.location.pathname + (window.location.search || ''));
+            window.location.href = `/auth/customer/login?redirect=${redirect}`;
+            return;
+        }
+
         setIsRedirectingToPromptPay(true);
 
         // สร้าง URL สำหรับหน้า PromptPay พร้อมข้อมูลการจอง
@@ -94,7 +104,7 @@ export default function BookingStep1PageContent({car, rentDate, deliveryLocation
                     </span>
 
                     <form onSubmit={handleCheckout} id='checkoutForm'>
-                        <button disabled={isRedirectingToPromptPay} className="btn btn-primary w-full">
+                        <button type="submit" disabled={isRedirectingToPromptPay} className="btn btn-primary w-full min-h-12 touch-manipulation">
                             {isRedirectingToPromptPay ?
                                 <><MoonLoader size='20'/> กำลังเปลี่ยนเส้นทาง</> :
                                 <h5>ดำเนินการชำระเงิน</h5>

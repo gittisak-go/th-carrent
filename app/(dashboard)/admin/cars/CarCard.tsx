@@ -1,4 +1,4 @@
-﻿import {Car} from "@/lib/types/models";
+import {Car} from "@/lib/types/models";
 import Link from "next/link";
 import Image from "next/image";
 import {fuelTypes} from "@/lib/types/fuelTypes";
@@ -26,10 +26,10 @@ export default function CarCard({props}: { props: Car })
                 {!isNotCompleted ?
                     <Image
                         fill
-                        unoptimized
                         src={props.img_urls[0]}
                         alt={`${props.manufacturer} ${props.model} image`}
                         className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     :
                     <ErrorMessage/>
@@ -43,11 +43,11 @@ export default function CarCard({props}: { props: Car })
 
                 <div className="card-actions items-center relative">
                     <div
-                        className='group w-36 h-16 -mr-6 -mb-7 ml-auto bg-neutral rounded-full justify-center items-center rounded-r-none flex  relative'
+                        className='group w-36 h-16 -mr-6 -mb-7 ml-auto bg-black dark:bg-neutral rounded-full justify-center items-center rounded-r-none flex relative shadow-lg'
                     >
                         <div className='flex flex-col ml-auto items-end pr-6'>
                                 <span
-                                    className="text-sm font-medium text-slate-300">ราคาต่อวัน:</span>
+                                    className="text-sm font-medium text-neutral-300">ราคาต่อวัน:</span>
                             <h3 className="font-bold text-lg text-primary">฿{props.price_per_day}</h3>
                         </div>
                     </div>

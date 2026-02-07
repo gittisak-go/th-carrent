@@ -1,8 +1,8 @@
-﻿import LogoLink from "@/app/components/LogoLink";
+import LogoLink from "@/app/components/LogoLink";
 import Link from "next/link";
 
 export const metadata = {
-    title: 'จัดการการจอง | th-carrent - Admin',
+    title: 'จัดการการจอง | Rungroj CarRental - Admin',
     description: 'ดูและจัดการการจองทั้งหมดจากลูกค้าในแผงควบคุมผู้ดูแลระบบ',
 };
 

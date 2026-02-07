@@ -1,10 +1,10 @@
-﻿import BookingStep1PageContent from "@/app/(dashboard)/customer/booking/step1/BookingStep1PageContent";
+import BookingStep1PageContent from "@/app/(dashboard)/customer/booking/step1/BookingStep1PageContent";
 import {use} from "react";
 import {redirect} from "next/navigation";
 import {Car} from "@/lib/types/models";
 
 export const metadata = {
-    title: 'Book Now: Step 1 - Details | th-carrent',
+    title: 'Book Now: Step 1 - Details | Rungroj CarRental',
     description: 'Review your car selection, pickup date and time, and your delivery location.',
 };
 

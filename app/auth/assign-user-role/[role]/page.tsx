@@ -1,9 +1,9 @@
-﻿import AssignUserRolePageContent from "@/app/auth/assign-user-role/[role]/AssignRolePage";
+import AssignUserRolePageContent from "@/app/auth/assign-user-role/[role]/AssignRolePage";
 import React from "react";
 
 export const metadata = {
-    title: 'Completing Registration | th-carrent',
-    description: 'Completing user registration. Please wait while your role is assigned within the th-carrent system.',
+    title: 'Completing Registration | Rungroj CarRental',
+    description: 'Completing user registration. Please wait while your role is assigned within the Rungroj CarRental system.',
 };
 
 /**

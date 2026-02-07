@@ -7,7 +7,10 @@ const emeraldThemeWithoutAnimations = {
     ...daisyuiThemes["emerald"],
     "--animation-btn": undefined,
     "--animation-input": undefined,
-    "--btn-focus-scale": undefined
+    "--btn-focus-scale": undefined,
+    "--color-neutral": "0a0a0a",
+    "--color-neutral-content": "e5e5e5",
+    "--color-base-300": "171717"
 };
 
 const config: Config = {
@@ -49,12 +52,12 @@ const config: Config = {
                     "secondary-content": "#080c14",
                     "accent": "#e2676b",
                     "accent-content": "#120404",
-                    "neutral": "#262931",
-                    "neutral-content": "#cfd0d2",
-                    "base-100": "#121621",
-                    "base-200": "#0e121b",
-                    "base-300": "#0a0d16",
-                    "base-content": "#c9cace",
+                    "neutral": "#0a0a0a",
+                    "neutral-content": "#e5e5e5",
+                    "base-100": "#000000",
+                    "base-200": "#0a0a0a",
+                    "base-300": "#171717",
+                    "base-content": "#fafafa",
                     "info": "#2563EB",
                     "info-content": "#d2e2ff",
                     "success": "#16A34A",

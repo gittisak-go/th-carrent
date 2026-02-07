@@ -12,8 +12,16 @@ const geistSans = localFont({
     weight: "100 900",
 });
 
+import type { Viewport } from 'next';
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+};
+
 export const metadata = {
-    applicationName: 'Rungroj Car Rental | รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์',
+    applicationName: 'Rungroj CarRental | รถเช่าอุดรธานี',
     description: "บริการรถเช่าในจังหวัดอุดรธานี — รุ่งโรจน์ คาร์เร้นท์. ค้นหาและจองรถที่เหมาะกับการเดินทางของคุณ พร้อมบริการรับ/คืนที่สะดวกใกล้สนามบิน.",
     authors: [{ name: 'Ahmed Kinan Ghbash' }],
     creator: 'Ahmed Kinan Ghbash',
@@ -21,7 +29,7 @@ export const metadata = {
     keywords: [
         "car rentals",
         "luxury car rentals",
-        "th-carrent",
+        "Rungroj CarRental",
         "car booking",
         "premium car rentals",
         "vehicle rentals",
@@ -39,22 +47,22 @@ export const metadata = {
     ],
     
     openGraph: {
-        title: "Rungroj Car Rental | รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์",
+        title: "Rungroj CarRental | รถเช่าอุดรธานี",
         description: "บริการรถเช่าในจังหวัดอุดรธานี — ค้นหาและจองรถพร้อมรับที่สนามบิน อุดรธานี",
         url: "https://udcar.rent",
-        siteName: 'th-carrent',
+        siteName: 'Rungroj CarRental',
         type: "website",
         images: [
             {
                 url: "https://udcar.rent/images/social-media-image.jpg",
-                alt: "th-carrent Social Media Image",
+                alt: "Rungroj CarRental Social Media Image",
             },
         ],
     },
     
     twitter: {
         card: "summary_large_image",
-        title: "Rungroj Car Rental | รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์",
+        title: "Rungroj CarRental | รถเช่าอุดรธานี",
         description: "บริการรถเช่าในจังหวัดอุดรธานี — ค้นหาและจองรถพร้อมรับที่สนามบิน อุดรธานี",
         images: ["https://udcar.rent/images/social-media-image.jpg"],
     },

@@ -1,8 +1,8 @@
-﻿import LogoLink from "@/app/components/LogoLink";
+import LogoLink from "@/app/components/LogoLink";
 import Link from "next/link";
 
 export const metadata = {
-    title: 'My Bookings | th-carrent',
+    title: 'My Bookings | Rungroj CarRental',
     description: 'View and manage your upcoming and past car rentals.',
 };
 

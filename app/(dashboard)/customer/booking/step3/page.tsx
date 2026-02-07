@@ -1,4 +1,4 @@
-﻿import {redirect} from "next/navigation";
+import {redirect} from "next/navigation";
 import {Car} from "@/lib/types/models";
 import {rentTimes} from "@/lib/types/rentTimes";
 import {createClient} from "@/lib/supabase/server";
@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-    title: 'Booking Complete | th-carrent',
+    title: 'Booking Complete | Rungroj CarRental',
     description: 'Your booking is confirmed! View your booking details and get ready for your rental.',
 };
 

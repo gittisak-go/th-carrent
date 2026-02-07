@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import React, {useEffect, useActionState} from "react";
 import Turnstile, {useTurnstile} from 'react-turnstile'
 import TextBox from "@/app/components/TextBox";
@@ -18,7 +18,7 @@ import {LoginIcon} from "@/app/icons";
  * Login form component.
  * @param isAdmin whether this login page is for admins or customers, redirection links will get set properly depending on this property.
  */
-export function LoginPage({isAdmin}: { isAdmin: boolean })
+export function LoginPage({ isAdmin, redirectTo }: { isAdmin: boolean; redirectTo?: string })
 {
     const turnstile = useTurnstile();
     const theme = useTheme();
@@ -56,6 +56,7 @@ export function LoginPage({isAdmin}: { isAdmin: boolean })
               id="login-form"
               autoComplete='on'
               className="flex flex-col w-full py-8 px-2 sm:px-8 my-auto min-h-screen h-full gap-7 justify-center relative scale-95 z-[1] animate-appear">
+            {redirectTo && <input type="hidden" name="redirect" value={redirectTo} />}
 
             <LogoLink className='mx-auto'/>
 

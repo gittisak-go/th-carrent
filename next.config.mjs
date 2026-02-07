@@ -33,6 +33,7 @@ const nextConfig = {
             },
             // Only include Supabase host if we were able to derive a hostname
             ...(supabaseHost ? [{ protocol: 'https', hostname: supabaseHost, port: '' }] : []),
+            { protocol: 'https', hostname: 'raw.githubusercontent.com', port: '' },
         ],
     },
 };

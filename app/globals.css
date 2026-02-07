@@ -18,6 +18,15 @@
     font-family: var(--font-geist-sans), sans-serif !important;
 }
 
+/* Touch-friendly targets for mobile (95% users) */
+@media (max-width: 1023px) {
+    .btn-primary,
+    .btn:not(.btn-ghost):not(.btn-link) {
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+}
+
 .my-toast-container {
     --toastify-toast-bd-radius: 0.5rem;
     --toastify-color-progress-light: oklch(var(--p)) !important;
@@ -106,7 +115,7 @@
 }
 
 .react-datepicker__day:not([aria-disabled="false"]) {
-    @apply !text-gray-500 !font-thin;
+    @apply !text-neutral-500 !font-thin;
 }
 
 .react-datepicker__day:hover:not([aria-disabled="true"]) {

@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import React, {useState, useEffect} from 'react';
 import {MapContainer, TileLayer, Marker, useMapEvents} from 'react-leaflet';
 import {LatLngTuple} from 'leaflet';
@@ -24,6 +24,17 @@ const defaults = {
     zoom: 19,
 };
 
+// Fallback center: อุดรธานี (Udon Thani) — ใช้เมื่อขอตำแหน่งไม่ได้หรือเครือข่ายล้มเหลว
+const FALLBACK_CENTER: LatLngTuple = [17.4152, 102.7850];
+
+function getLocationErrorMessage(error: GeolocationPositionError): string {
+    if (error.code === error.PERMISSION_DENIED)
+        return 'กรุณาอนุญาตการเข้าถึงตำแหน่งในเบราว์เซอร์ เพื่อช่วยเลือกจุดส่งรถ หรือเลือกตำแหน่งบนแผนที่ด้วยตนเอง';
+    if (error.code === error.POSITION_UNAVAILABLE || error.message?.includes('network'))
+        return 'ไม่สามารถดึงตำแหน่งจากเครือข่ายได้ แผนที่แสดงจุดอ้างอิงอุดรธานี — เลือกจุดส่งรถบนแผนที่ได้เลย';
+    return 'ไม่สามารถใช้ตำแหน่งปัจจุบันได้ — เลือกจุดส่งรถบนแผนที่ได้เลย';
+}
+
 const Map = ({
                  defaultLocation, onLocationSelect = () =>
     {
@@ -33,14 +44,14 @@ const Map = ({
     const [markerPosition, setMarkerPosition] = useState<LatLngTuple | null>(null);
     const [currentPosition, setCurrentPosition] = useState<LatLngTuple | null>(null);
 
-    // Function to get user's current location
+    // Function to get user's current location (with fallback so map always loads)
     useEffect(() =>
     {
         // Use default location if specified.
         if (defaultLocation)
         {
             setCurrentPosition([defaultLocation.lat, defaultLocation.lng]);
-            setMarkerPosition([defaultLocation.lat, defaultLocation.lng])
+            setMarkerPosition([defaultLocation.lat, defaultLocation.lng]);
             return;
         }
 
@@ -50,16 +61,19 @@ const Map = ({
                 (position) =>
                 {
                     const {latitude, longitude} = position.coords;
-                    setCurrentPosition([latitude, longitude]); // Set user's current position
+                    setCurrentPosition([latitude, longitude]);
                 },
                 (error) =>
                 {
-                    toast.error(error.message === 'User denied Geolocation' ?
-                        'Location access is required to help you select your delivery location. Please enable location services in your browser settings.' :
-                        error.message);
+                    toast.info(getLocationErrorMessage(error));
+                    setCurrentPosition(FALLBACK_CENTER);
                 },
-                {enableHighAccuracy: true}
+                {enableHighAccuracy: true, timeout: 10000, maximumAge: 60000}
             );
+        }
+        else
+        {
+            setCurrentPosition(FALLBACK_CENTER);
         }
     }, [defaultLocation]);
 

@@ -1,8 +1,8 @@
-﻿import NavBar from "@/app/components/NavBar";
+import NavBar from "@/app/components/NavBar";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-    title: 'Privacy Policy | th-carrent',
+    title: 'Privacy Policy | Rungroj CarRental',
 };
 
 export default function Page() {
@@ -10,9 +10,9 @@ export default function Page() {
         <>
             <NavBar />
             <main className="py-10 px-4 md:px-8 lg:px-14">
-                <h1 className="text-4xl font-semibold">th-carrent - Privacy Policy</h1>
+                <h1 className="text-4xl font-semibold">Rungroj CarRental - Privacy Policy</h1>
 
-                <p>At th-carrent, we value your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, share, and protect your data when you use our website and services.</p>
+                <p>At Rungroj CarRental, we value your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, share, and protect your data when you use our website and services.</p>
 
                 <h2 className="text-2xl mt-4 font-medium">1. Data Collection</h2>
 

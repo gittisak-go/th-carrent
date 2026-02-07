@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import React from "react";
 
 /**
@@ -18,19 +18,22 @@ export default function LogoLink({href = '/', replace = false, className = '', s
 {
     return (
         <Link replace={replace} href={href} className={`flex items-center justify-center gap-2 group ${className}`}>
-            <div className={`bg-[url('/images/logo-light.svg')] 
-                            dark:bg-[url('/images/logo-dark.svg')]
-                            group-hover:animate-bounce
+            <img
+                src="/images/logo-rungroj.png"
+                alt="Rungroj CarRental"
+                className={`object-contain bg-transparent
                             ${size === 'sm' && 'size-6'}
-                            ${size === 'md' && 'size-7'}
-                            ${size === 'lg' && 'size-9'}`}/>
-
-            <h1 className={`font-bold
+                            ${size === 'md' && 'size-8'}
+                            ${size === 'lg' && 'size-10'}
+                            group-hover:opacity-90 transition-opacity`}
+            />
+            <h1 className={`font-bold text-base-content
                             ${size === 'sm' && 'text-xl'}
                             ${size === 'md' && 'text-2xl'}
-                            ${size === 'lg' && 'text-4xl'} 
-                            `}
-                            >th-carrent</h1>
+                            ${size === 'lg' && 'text-4xl'}
+                            `}>
+                Rungroj CarRental
+            </h1>
         </Link>
     );
 }

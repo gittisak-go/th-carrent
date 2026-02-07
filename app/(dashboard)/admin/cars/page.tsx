@@ -1,4 +1,4 @@
-﻿import { getAllCars, getCarTypes } from "@/lib/data/mockCars";
+import { getAllCars, getCarTypes } from "@/lib/data/mockCars";
 import Link from "next/link";
 import {Car} from "@/lib/types/models";
 import CarCard from "@/app/(dashboard)/admin/cars/CarCard";
@@ -6,7 +6,7 @@ import * as m from "framer-motion/m";
 import {FaPlus} from "react-icons/fa6";
 
 export const metadata = {
-    title: 'จัดการรถ | th-carrent - Admin',
+    title: 'จัดการรถ | Rungroj CarRental - Admin',
     description: 'ดู แก้ไข และเพิ่มรถในระบบของคุณผ่านแผงควบคุมผู้ดูแลระบบ',
 };
 
@@ -50,12 +50,12 @@ export default async function AdminCarsPage()
                 รถของเรา
             </m.h2>
 
-            <Link className='btn btn-neutral btn-square z-20 text-lg shadow-xl
-                             fixed lg:sticky bottom-8 lg:top-20 lg:ml-auto
-                             right-4 md:right-8 lg:right-14'
+            <Link className='btn bg-black hover:bg-neutral-800 border-0 text-primary rounded-full shadow-xl z-20
+                             fixed lg:sticky bottom-8 lg:top-20 lg:ml-auto right-4 md:right-8 lg:right-14
+                             min-h-12 min-w-12 flex items-center justify-center'
                   href={'/admin/cars/new-car/'}
-                  title={'เพิ่มรถใหม่เข้าระบบ'}>
-                <FaPlus className='text-primary'/>
+                  title={'เพิ่มรถ (ราคา ภาพ แก้ไขได้แอดมิน)'}>
+                <FaPlus className='text-xl'/>
             </Link>
 
             <section

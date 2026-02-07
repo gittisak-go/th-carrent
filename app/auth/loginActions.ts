@@ -1,4 +1,4 @@
-﻿'use server'
+'use server'
 
 import {createClient} from "@/lib/supabase/server";
 import {redirect} from "next/navigation";
@@ -25,9 +25,10 @@ export async function loginCustomer(_prevState: State, formData: FormData)
 
 async function login(_prevState: State, formData: FormData, isAdmin: boolean)
 {
-    const supabase = await createClient()
+    const supabase = await createClient();
     const data = Object.fromEntries(formData) as LoginFormData;
     const captchaToken = formData.get('cf-turnstile-response') as string;
+    const redirectTo = formData.get('redirect') as string | null;
 
     const {error} = await supabase.auth.signInWithPassword({
         email: data.email,
@@ -35,9 +36,12 @@ async function login(_prevState: State, formData: FormData, isAdmin: boolean)
         options: {
             captchaToken: captchaToken,
         },
-    })
+    });
 
-    if (!error) redirect(isAdmin ? '/admin/' : '/customer/');
+    if (!error) {
+        const url = redirectTo && redirectTo.startsWith('/') ? redirectTo : (isAdmin ? '/admin/' : '/customer/');
+        redirect(url);
+    }
 
     // Return the form data with an error when an error happens during auth.
     return {

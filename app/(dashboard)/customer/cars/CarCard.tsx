@@ -1,4 +1,4 @@
-﻿import {Car} from "@/lib/types/models";
+import {Car} from "@/lib/types/models";
 import Link from "next/link";
 import Image from "next/image";
 import {fuelTypes} from "@/lib/types/fuelTypes";
@@ -16,13 +16,13 @@ export default function CarCard({props, href, rentDaysCount}: {
             className="card bg-base-100 rounded-box overflow-hidden w-full shadow-lg hover:shadow-xl transition-shadow group"
             href={href}>
 
-            <figure className="relative h-56 w-full rounded-t-lg overflow-hidden">
+            <figure className="relative h-56 w-full rounded-t-lg overflow-hidden bg-base-300">
                 <Image
                     fill
-                    unoptimized
                     src={props.img_urls[0]}
                     alt={`${props.manufacturer} ${props.model} image`}
                     className="object-cover"
+                    sizes="(max-width: 768px) 92vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute top-2 right-2 w-8 h-8 rounded-full border-2 border-white"
                      style={{backgroundColor: props.color}}
@@ -38,14 +38,14 @@ export default function CarCard({props, href, rentDaysCount}: {
 
                 <div className="card-actions items-center relative">
                     <div
-                            className='w-52 h-16 -mr-6 -mb-7 ml-auto bg-neutral rounded-full justify-center items-center rounded-r-none flex  relative'
+                            className='w-52 h-16 -mr-6 -mb-7 ml-auto bg-black dark:bg-neutral rounded-full justify-center items-center rounded-r-none flex relative shadow-lg'
                         >
                                        <span
                                            className='btn btn-primary btn-circle btn-sm border-0 absolute left-4 top-4 transition-[padding] group-hover:pl-2'><RightArrowIcon/></span>
 
                         <div className='flex flex-col ml-auto items-end pr-6'>
                                 <span
-                                    className="text-sm font-medium text-slate-300">ราคา {rentDaysCount} วัน:</span>
+                                    className="text-sm font-medium text-neutral-300">ราคา {rentDaysCount} วัน:</span>
                             <h3 className="font-bold text-lg text-primary">{formatThaiPrice(props.price_per_day * rentDaysCount)}</h3>
                         </div>
                     </div>

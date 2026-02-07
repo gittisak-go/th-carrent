@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import {Car} from "@/lib/types/models";
 import {Swiper, SwiperSlide} from "swiper/react";
 import Link from "next/link";
@@ -105,11 +105,12 @@ function FeaturedCarCard({props, href}: { props: Car, href: string })
 
             <Image
                 fill
-                loading='eager'
-                unoptimized
-                className='-z-10 object-cover'
+                loading="eager"
+                className="-z-10 object-cover"
                 src={props.img_urls[0]}
-                alt={`${props.manufacturer} ${props.model} image.`}/>
+                alt={`${props.manufacturer} ${props.model} image.`}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
         </Link>
     );
 }

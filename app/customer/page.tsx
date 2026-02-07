@@ -1,4 +1,4 @@
-﻿import * as m from "framer-motion/m"
+import * as m from "framer-motion/m"
 import FindCarForm from "@/app/customer/FindCarForm";
 import Image from "next/image";
 import bgImg from '@/public/images/customer-dashboard.jpg';
@@ -6,7 +6,7 @@ import NavBar from "@/app/components/NavBar";
 import Footer from "@/app/components/Footer";
 
 export const metadata = {
-    title: "Your Journey Starts Here | th-carrent",
+    title: "Your Journey Starts Here | Rungroj CarRental",
     description: "Choose your preferred pickup date, time, and delivery location for your car rental.",
 };
 

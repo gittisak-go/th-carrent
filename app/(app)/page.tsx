@@ -13,7 +13,7 @@ import {IconType} from "react-icons";
 import {getFeaturedCars} from "@/lib/data/mockCars";
 
 export const metadata = {
-    title: 'th-carrent | ค้นหารถเช่าที่เหมาะกับคุณ',
+    title: 'Rungroj CarRental | ค้นหารถเช่าที่เหมาะกับคุณ',
     description: 'รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์ - บริการรถเช่าคุณภาพ ราคาย่อมเยา',
 };
 

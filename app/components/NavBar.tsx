@@ -1,4 +1,4 @@
-﻿import {ThemeSwitcher} from "@/app/components/ThemeSwitcher";
+import {ThemeSwitcher} from "@/app/components/ThemeSwitcher";
 import UserProfile from "@/app/components/UserProfile";
 import LogoLink from "@/app/components/LogoLink";
 import NavBarItems from "@/app/components/NavBarItems";
@@ -12,7 +12,7 @@ export default function NavBar({position = "sticky", role = ''}: {
         <div className={`top-3 px-3 z-[1100] w-full ${position}`}>
             <div
                 className="navbar backdrop-blur bg-white dark:bg-black text-base-content 
-                 bg-opacity-50 dark:bg-opacity-50 rounded-lg mx-auto px-4 py-0 min-h-14 shadow">
+                 bg-opacity-90 dark:bg-opacity-90 rounded-2xl mx-auto px-4 py-0 min-h-14 shadow-lg border border-black/10 dark:border-white/10">
 
                 {/* Sidebar button on mobile */}
                 <div className="flex-none lg:hidden">

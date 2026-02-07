@@ -1,8 +1,8 @@
-﻿import {LoginPage} from "@/app/pages/LoginPage";
+import {LoginPage} from "@/app/pages/LoginPage";
 
 export const metadata = {
-    title: "Login | th-carrent - Admin",
-    description: "Securely access the th-carrent admin panel to manage rentals, bookings, and more.",
+    title: "Login | Rungroj CarRental - Admin",
+    description: "Securely access the Rungroj CarRental admin panel to manage rentals, bookings, and more.",
 };
 
 export default function AdminLoginPage() {
