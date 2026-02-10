@@ -102,3 +102,51 @@ npm run lint
 ## ใบอนุญาต (License)
 
 โปรเจกต์นี้อยู่ภายใต้ MIT License
+
+Project Spec Header (for all assistants)
+Platform
+
+Supabase: Postgres, Auth, Storage, Realtime, Edge Functions.
+Env: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY. Docker only for local dev (supabase start), not required in prod.
+Database
+
+Schemas: public (app), auth/storage/realtime (system).
+Core tables: profiles, vehicles, vehicle_device_links, reservations, payments, security_actions, id_verifications.
+Timestamps: created_at, updated_at via trigger set_updated_at().
+User FK: profiles.id = auth.users.id (single source of truth).
+Auth & Roles
+
+Users live in auth.users. App uses public.profiles (role, avatar_url, etc.).
+Example roles: customer, staff, super_admin, auditor (adjust per Admin panel).
+RLS enabled on all app tables. Use auth.uid() and role checks.
+RLS Policy Rules
+
+Separate SELECT/INSERT/UPDATE/DELETE policies.
+Index columns used in policies (user_id, vehicle_id, status, tenant_id if any).
+service_role bypasses RLS; never use it client-side.
+Storage
+
+Avatars in bucket user-avatars/<user_id>/* with folder-based RLS.
+Tables store URLs/metadata, not files.
+Realtime
+
+Prefer broadcast with private channels over postgres_changes.
+Topics: reservation::events, vehicle::events.
+Add triggers (realtime.broadcast_changes) and RLS on realtime.messages for read/write.
+Edge Functions
+
+Use Deno.serve; import deps via npm:/jsr: with pinned versions.
+Use SERVICE_ROLE_KEY server-side only. Share utilities in functions/_shared.
+Contracts (must follow)
+
+profiles(id uuid PK = auth.users.id, role text, avatar_url text nullable). Users can update their own profile and avatar.
+reservations(id, user_id FK→profiles, vehicle_id FK, status text).
+payments(id, reservation_id FK, user_id FK, status).
+vehicles(status, last_known_geo optional).
+id_verifications(user_id, reservation_id, status, id_hash).
+security_actions(requested_by, action, status, metadata).
+Governance
+
+Non-standard or experimental = prefix with experimental_* or _legacy.
+All schema changes via migrations; update README_SPEC version note on each change._
+Note: Admin-side can evolve (not fixed). Front-end contract is fixed to this header.
