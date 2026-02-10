@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>รถเช่าอุดร</title>
+    <meta name="description" content="รถเช่าอุดร" />
+    <style>
+      body{font-family:system-ui,Arial,sans-serif;margin:0;padding:16px;background:#f8fafc}
+      .container{max-width:800px;margin:0 auto;background:#fff;padding:20px;border-radius:8px}
+      img.avatar{width:120px;height:120px;border-radius:24px;object-fit:cover}
+      pre{background:#f3f4f6;padding:12px;overflow:auto}
+      a.button{display:inline-block;margin:8px 4px;padding:10px 14px;background:#00b050;color:#fff;border-radius:8px;text-decoration:none}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>รถเช่าอุดรธานี รุ่งโรจน์ คาร์เร้นท์ — LIFF Preview</h1>
+      <p>ใช้หน้านี้เป็น URL สำหรับลงทะเบียน LIFF ใน LINE Developers (mobile-first preview).</p>
+
+      <section>
+        <h2>ตัวอย่างการ์ดโปรไฟล์</h2>
+        <img class="avatar" src="/assets/nang-noy.png" alt="นางน้อย avatar" />
+        <p><strong>ชื่อ:</strong> นางน้อย — <strong>ตำแหน่ง:</strong> แอดมินเพจ</p>
+        <p>
+          Flex JSON (ตัวอย่าง):
+          <a class="button" href="/flex-message-profile.json" target="_blank">เปิด JSON</a>
+        </p>
+      </section>
+
+      <section>
+        <h2>Webhook / API</h2>
+        <p>Webhook endpoint (ตัวอย่างใน repo): <code>/api/line/webhook</code></p>
+        <p>ถ้าต้องการทดสอบ webhook แบบ local ให้ใช้ `scripts/send-line-test.js` ใน repo</p>
+      </section>
+
+      <section>
+        <h2>URL ที่จะใช้ลงทะเบียนกับ LINE</h2>
+        <p>ใช้หนึ่งใน URL ด้านล่างเป็น “Endpoint URL / LIFF URL” ขึ้นกับการตั้งค่า:</p>
+        <ul>
+          <li>GitHub Pages (ถ้าเปิดแล้ว): <a href="https://gittisak-go.github.io/th-carrent/apps/liff-preview/">https://gittisak-go.github.io/th-carrent/apps/liff-preview/</a></li>
+          <li>Raw GitHub (ใช้ได้ทันที): <a href="https://raw.githubusercontent.com/gittisak-go/th-carrent/main/docs/apps/liff-preview/index.html">https://raw.githubusercontent.com/gittisak-go/th-carrent/main/docs/apps/liff-preview/index.html</a></li>
+        </ul>
+        <p>หมายเหตุ: ถ้า Pages ยังไม่แสดง (404) ให้รอ propagation หรือไปที่ Settings → Pages และตั้ง Source เป็น <code>gh-pages</code> (root) — ผมช่วยได้ถ้าคุณต้องการ</p>
+      </section>
+
+      <section>
+        <h2>คำแนะนำด่วนหลังได้ URL</h2>
+        <ol>
+          <li>ลงทะเบียน LIFF ใน LINE Developers โดยใส่ URL ข้างบน</li>
+          <li>รับ LIFF ID แล้วใส่ไว้ในหน้า LIFF (ถ้ต้องการให้หน้าเรียก liff.init ให้ผมเพิ่มสคริปต์ให้)</li>
+          <li>สำหรับ webhook ให้ตั้งค่า webhook URL เป็น URL ของเซิร์ฟเวอร์ที่รัน `api/line/webhook` (GitHub Pages ไม่รองรับ server-side webhook)
+          </li>
+        </ol>
+      </section>
+    </div>
+  </body>
+</html>
